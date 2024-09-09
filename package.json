@@ -1,0 +1,28 @@
+{
+  "name": "redo-deliveryapp",
+  "version": "1.0.0",
+  "description": "Delivery app inspirado en el proyecto de la clase de lenguajes de programacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "git@github.com:GerardoSalinas/redoDeliveryApp.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GerardoSalinas/redoDeliveryApp.git"
+  },
+  "author": "GerardoSalinas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GerardoSalinas/redoDeliveryApp/issues"
+  },
+  "homepage": "https://github.com/GerardoSalinas/redoDeliveryApp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3"
+  }
+}
