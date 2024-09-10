@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./../dbConnection');
 const ubicacion = require('./Ubicacion');
 const Producto = require('./Producto');
+const Ubicacion = require('./Ubicacion');
 
 const Comercio = sequelize.define('Comercio',
   {
@@ -16,6 +17,13 @@ const Comercio = sequelize.define('Comercio',
     imagen: {
         type: DataTypes.STRING,
     },
+    id_ubicacion: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Ubicacion,
+        key: 'ID'
+      }
+    },
   },
   {
     tableName: 'Comercios',
@@ -23,11 +31,11 @@ const Comercio = sequelize.define('Comercio',
   },
 );
 
-Comercio.belongsTo(ubicacion, {
-    foreignKey: {
-        name: 'ID_Ubicacion'
-    }
-});
+// Comercio.belongsTo(ubicacion, {
+//     foreignKey: {
+//         name: 'ID_Ubicacion'
+//     }
+// });
 
 Comercio.hasMany(Producto, {
   foreignKey: {

@@ -2,20 +2,21 @@ const { obtenerComercios, obtenerComercio, crearComercio, editarComercio, elimin
 const { Router } = require('express')
 const comercioRouter = Router();
 
+//obtiene un comercio en especifico
+comercioRouter.get("/obtener/:id", obtenerComercio);
+
 //todos los comercios
-comercioRouter.get("/comercios", obtenerComercios);
+comercioRouter.get("/obtener", obtenerComercios);
 
 //crea un nuevo comercio
-comercioRouter.post("/comercio/crear", crearComercio);
+comercioRouter.post("/crear", crearComercio);
 
 //edita un comercio
-comercioRouter.put("/comercio/editar/:id",editarComercio);
+comercioRouter.put("/editar/:id",editarComercio);
 
 //elimina un comercio
-comercioRouter.delete("/comercio/eliminar/:id", eliminarComercio);
+comercioRouter.delete("/eliminar/:id", eliminarComercio);
 
-//obtiene un comercio en especifico
-comercioRouter.get("/comercio/:id", obtenerComercio);
 
 
 module.exports = comercioRouter;
