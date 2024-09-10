@@ -27,7 +27,7 @@ async function obtenerUbicacion(req,res){
 async function crearUbicacion(req, res){
     try {
         const { latitud, longitud, descripcion } = req.body;
-        const nuevaUbicacion = await ubicacion.create({latitud, longitud, descripcion});
+        const nuevaUbicacion = await ubicacion.create({ latitud, longitud, descripcion });
         res.type('application/json');
         res.status(200).json(nuevaUbicacion);
     } catch (error) {
@@ -53,25 +53,25 @@ async function eliminarUbicacion(req,res){
     }
 };
 
-
+//listo
 async function editarUbicacion(req,res){
     try {
         const body = req.body;
-        //falta validacion del body
-        const existence = await ubicacion.count({ where: { ID: id } });
-        if (existence > 0){
-            const ubicacionEditada = await ubicacion.update({
-                ID: body.id,
-                nombre: body.nombre,
-                imagen: body.imagen,
-                ubicacion: body.ubicacion,
+        const { id }= req.params
+        const existence = await ubicacion.findOne({ where: { ID: id } });
+        let infoMessage = "la ubicacion que se quiere editar no existe"
+        if (existence != null){
+            await ubicacion.update({
+                id: existence.id,
+                latitud: body.latitud,
+                longitud: body.longitud,
+                descripcion: body.descripcion,
             },
             { where: { ID: id } 
             });
-    
-            res.status(200).json({ ubicacion: ubicacionEditada});
+            infoMessage = "ubicacion editada exitosamente";
         }
-        res.status(200).json({ message: "no se pudo editar el registro porque no existe" });
+        res.status(200).json({ message: infoMessage });
     } catch (error) {
         console.log(error);
         res.status(500).json({ errorMessage: error });
